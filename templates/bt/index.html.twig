@@ -10,9 +10,15 @@
 
 <div class="example-wrapper">
     <h1>Formulario Tramites Generalitat para BT {{ controller_name }}</h1>
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+    <p>The current version is {{ constant('Twig_Environment::VERSION') }}</p>
+    {% set items = ['a', 'b', 'c', 'd', 'e', 'f', 'g'] %}
+        </table>
+    <div class="col-md-6">
+        {{ form_widget(form.task) }}
+        <div class="col-md-6">
+            {{ form_widget(form.dueDate) }}
+        </div>
+        <table>
     <ul>
         <li>Your controller at <code><a href="{{ 'src/Controller/BtController.php'|file_link(0) }}">src/Controller/BtController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'templates/bt/index.html.twig'|file_link(0) }}">templates/bt/index.html.twig</a></code></li>
