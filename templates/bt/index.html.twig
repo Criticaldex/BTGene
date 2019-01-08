@@ -3,25 +3,36 @@
 {% block title %}Hello {{ controller_name }}!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        .example-wrapper {
+            margin: 1em auto;
+            width: 95%;
+            font: 18px/1.5 sans-serif;
+        }
 
-<div class="example-wrapper">
-    <h1>Formulario Tramites Generalitat para BT {{ controller_name }}</h1>
-    <p>The current version is {{ constant('Twig_Environment::VERSION') }}</p>
-    {% set items = ['a', 'b', 'c', 'd', 'e', 'f', 'g'] %}
-        </table>
-    <div class="col-md-6">
-        {{ form_widget(form.task) }}
-        <div class="col-md-6">
-            {{ form_widget(form.dueDate) }}
-        </div>
-        <table>
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/BtController.php'|file_link(0) }}">src/Controller/BtController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/bt/index.html.twig'|file_link(0) }}">templates/bt/index.html.twig</a></code></li>
-    </ul>
-</div>
+        .example-wrapper code {
+            background: #F5F5F5;
+            padding: 2px 6px;
+        }
+    </style>
+    <div class="example-wrapper">
+        <h1>Formulario Tramites Generalitat para BT {{ controller_name }}</h1>
+        {% for row in form|batch(2) %}
+            <div class="row">
+                {% for item in row %}
+                    <div class="col-md-6">
+                        {{ form_label(item) }}
+                        {{ form_widget(item) }}
+                    </div>
+                {% endfor %}
+            </div>
+            </br>
+        {% endfor %}
+            <ul>
+                <li>Your controller at <code><a href="{{ 'src/Controller/BtController.php'|file_link(0) }}">src/Controller/BtController.php</a></code>
+                </li>
+                <li>Your template at <code><a href="{{ 'templates/bt/index.html.twig'|file_link(0) }}">templates/bt/index.html.twig</a></code>
+                </li>
+            </ul>
+    </div>
 {% endblock %}
